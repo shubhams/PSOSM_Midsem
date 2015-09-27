@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js"></script>
+    </head>
+    <body>
+        
+    
+
+<h2>lineChart</h2>
+
+<div id="linechart"><svg style="width:900px;height:450px;"></svg></div>
+
+
+    <script>
+
+
+
+            data_linechart=[{"values": [{"y": 2, "x": 1442746800000.0}, {"y": 11, "x": 1442764800000.0}, {"y": 12, "x": 1442768400000.0}, {"y": 13, "x": 1442772000000.0}, {"y": 15, "x": 1442851200000.0}, {"y": 25, "x": 1442854800000.0}, {"y": 27, "x": 1442862000000.0}, {"y": 170, "x": 1442876400000.0}, {"y": 186, "x": 1442880000000.0}, {"y": 194, "x": 1442908800000.0}, {"y": 206, "x": 1442912400000.0}, {"y": 274, "x": 1442916000000.0}, {"y": 285, "x": 1442923200000.0}, {"y": 288, "x": 1442930400000.0}, {"y": 290, "x": 1442944800000.0}, {"y": 293, "x": 1442952000000.0}, {"y": 301, "x": 1442998800000.0}, {"y": 309, "x": 1443002400000.0}, {"y": 317, "x": 1443009600000.0}, {"y": 361, "x": 1443031200000.0}, {"y": 369, "x": 1443034800000.0}, {"y": 371, "x": 1443038400000.0}, {"y": 382, "x": 1443042000000.0}, {"y": 413, "x": 1443045600000.0}, {"y": 421, "x": 1443052800000.0}, {"y": 429, "x": 1443056400000.0}, {"y": 432, "x": 1443121200000.0}, {"y": 441, "x": 1443124800000.0}, {"y": 443, "x": 1443132000000.0}, {"y": 446, "x": 1443142800000.0}, {"y": 454, "x": 1443186000000.0}, {"y": 456, "x": 1443218400000.0}, {"y": 457, "x": 1443261600000.0}, {"y": 458, "x": 1443268800000.0}, {"y": 460, "x": 1443326400000.0}], "key": "Serie 1", "yAxis": "1"}];
+
+
+        nv.addGraph(function() {
+        var chart = nv.models.lineChart();
+
+        chart.margin({top: 30, right: 60, bottom: 20, left: 60});
+
+        var datum = data_linechart;
+
+        chart.color(d3.scale.category20c().range());
+
+
+                chart.xAxis
+                .tickFormat(function(d) { return d3.time.format('%d %b %Y')(new Date(parseInt(d))) }
+);
+            chart.yAxis
+                .tickFormat(d3.format(',.02f'));
+
+
+
+          chart.showLegend(true);
+
+
+    
+
+        
+
+
+
+            d3.select('#linechart svg')
+            .datum(datum)
+            .transition().duration(500)
+            .attr('width', 900)
+            .attr('height', 450)
+            .call(chart);
+
+
+        });
+
+
+
+    </script>
+
+    </body>
+</html>

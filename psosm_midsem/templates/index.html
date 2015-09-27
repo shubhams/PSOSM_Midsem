@@ -1,9 +1,22 @@
+<html>
+<body>
 <form action="/" method="post">
 <input type="text" name="term" size="30"> <input type="submit" value="Search">
 </form>
 {% if refresh_button%}
     {{ refresh_button | safe}}
 {% endif %}
-{% if result %}
-	<li>{{ result }}</li>
+<ul style="display:inline">
+<li>
+{% if result_retweet_cdf %}
+	<div>{{ result_retweet_cdf | safe }}</div>
 {% endif %}
+</li>
+<li>
+{% if result_tweet_cdf %}
+	<div>{{ result_tweet_cdf | safe }}</div>
+{% endif %}
+</li>
+</ul>
+</body>
+</html>

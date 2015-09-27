@@ -18,18 +18,18 @@ class listener(StreamListener):
         all_data = json.loads(data)
 
         tweet_id = all_data["id"]
-        
+
         tweet = all_data["text"]
 
         created_time = all_data["created_at"]
-        
+
         username = all_data["user"]["screen_name"]
 
         print '\ntime=',created_time,'id=', tweet_id,', user=', username, 'tweet=\n', tweet, '\n'
 
         append_file(gterm, data)
         # fw.write(data)
-        
+
         return True
 
     def on_error(self, status):
@@ -48,7 +48,7 @@ def start_stream(term):
 	auth.set_access_token(atoken, asecret)
 	twitterStream = Stream(auth, listener())
 
-	# =============Change track string to get desired tweets=============== 
+	# =============Change track string to get desired tweets===============
 	# twitterStream.filter(track=["ModiInSiliconValley"])
 	twitterStream.filter(track=[term])
 

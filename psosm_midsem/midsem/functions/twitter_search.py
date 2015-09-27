@@ -14,7 +14,7 @@ api = twitter.Api(consumer_key=consumer_key,
 
 def search(term):
     search_results = []
-    results = api.GetSearch(term=term, count=40)
+    results = api.GetSearch(term=term, count=100)
     for result in results:
         search_results.append(result.AsJsonString())
 
