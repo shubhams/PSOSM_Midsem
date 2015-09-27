@@ -8,6 +8,7 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from midsem.functions.twitter_search import search as search_twitter
 from midsem.functions.json_parser import fileParser
 from midsem.functions.graphing import parseData
+from midsem.functions.plot_shiv import plot
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -19,8 +20,10 @@ def search(request):
         data = fileParser(filename)
         print len(data)
         graph = parseData(data,filename)
+        plot(filename)
         retweet_cdf_file = os.path.join(BASE_DIR, 'retweet_cdf.html')
         tweet_cdf_file = os.path.join(BASE_DIR, 'tweet_cdf.html')
+        plot_file = os.path.join(BASE_DIR, 'plot.html')
         content = []
         with open(retweet_cdf_file) as f:
             content = f.readlines()
